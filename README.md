@@ -19,12 +19,11 @@ python -m unittest discover -s tests -v
 
 To call an API, set `OPENAI_API_KEY`. The default endpoint is OpenAI's API; `OPENAI_BASE_URL` can point to another OpenAI-compatible provider. Never commit credentials.
 
-## Project roadmap
+## 365-day project roadmap
 
-1. **Foundation:** configuration, HTTP client, and unit tests.
-2. **Reliability:** timeouts, error handling, and response validation.
-3. **Developer experience:** a small CLI and example prompts.
-4. **Application patterns:** structured outputs, retries where appropriate, and usage examples.
+The full day-by-day plan lives in [ROADMAP.md](ROADMAP.md). It covers configuration, client reliability, GPT capabilities, provider support, persistence, retrieval-augmented generation (RAG), controlled tool use, security, evaluation, application integrations, deployment, and release engineering.
+
+Progress is tracked by calendar project day, not commit count. A day is marked complete only after a meaningful change is committed and verified; empty or backfilled commits are not part of the plan.
 
 ## Project principles
 

@@ -11,7 +11,7 @@
 ## Progress log
 
 - [x] **Day 1 — 2026-10-21:** create GPT Plugin Lab's Python package, dependency-free chat client, unit tests, packaging metadata, secret-safe defaults, and CI workflow. Initial commits verified in repository history.
-- [x] **Day 2 — 2026-10-22:** publish the detailed 365-day plan, define calendar-day numbering, and establish honest completion rules. The roadmap commit must be verified before treating this entry as complete.
+- [x] **Day 2 — 2026-10-22:** publish the detailed 365-day plan, define calendar-day numbering, and establish honest completion rules. Verified roadmap commit: `0ffd6b7ccdab73db6cc20f6178c35494c9b0c0c4`.
 
 ## Daily roadmap
 
@@ -387,7 +387,7 @@
 - [ ] **Day 335 (2027-09-20):** Document persistent-data backup and restore.
 - [ ] **Day 336 (2027-09-21):** Review deployability and recovery procedures.
 
-### Days 337–364: Performance, release, and year-end review
+### Days 337–365: Performance, release, and year-end review
 
 - [ ] **Day 337 (2027-09-22):** Benchmark the client with deterministic fake responses.
 - [ ] **Day 338 (2027-09-23):** Test bounded concurrency under representative load.
