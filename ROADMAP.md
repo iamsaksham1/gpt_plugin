@@ -21,8 +21,8 @@
 
 - [x] **Day 1 (2026-10-21):** Create the package, client, unit tests, and CI foundation.
 - [x] **Day 2 (2026-10-22):** Publish this 365-day roadmap and define honest progress rules.
-- [ ] **Day 3 (2026-10-23):** Implement an immutable configuration object for environment variables.
-- [ ] **Day 4 (2026-10-24):** Document configuration precedence and local API-key setup.
+- [x] **Day 3 (2026-10-23):** Implement an immutable configuration object for environment variables.
+- [x] **Day 4 (2026-10-24):** Document configuration precedence and local API-key setup.
 - [ ] **Day 5 (2026-10-25):** Validate message roles and content before requests.
 - [ ] **Day 6 (2026-10-26):** Reject blank model names and invalid request parameters.
 - [ ] **Day 7 (2026-10-27):** Validate timeout values as finite and positive.
