@@ -17,7 +17,7 @@ Requires Python 3.11 or newer.
 python -m unittest discover -s tests -v
 ```
 
-To call an API, set `OPENAI_API_KEY`. The default endpoint is OpenAI's API; `OPENAI_BASE_URL` can point to another OpenAI-compatible provider. Never commit credentials.
+To call an API, set `OPENAI_API_KEY`. The default endpoint is OpenAI's API; `OPENAI_BASE_URL` can point to another OpenAI-compatible provider. Never commit credentials. See the [configuration guide](docs/configuration.md) for variable defaults, precedence, and local setup.
 
 ## 365-day project roadmap
 

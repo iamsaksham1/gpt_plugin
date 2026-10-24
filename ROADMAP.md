@@ -12,6 +12,8 @@
 
 - [x] **Day 1 — 2026-10-21:** create GPT Plugin Lab's Python package, dependency-free chat client, unit tests, packaging metadata, secret-safe defaults, and CI workflow. Initial commits verified in repository history.
 - [x] **Day 2 — 2026-10-22:** publish the detailed 365-day plan, define calendar-day numbering, and establish honest completion rules. Verified roadmap commit: `0ffd6b7ccdab73db6cc20f6178c35494c9b0c0c4`.
+- [x] **Day 3 — 2026-10-23:** add immutable environment configuration in commit `4d56fbfd8f970dd9808ef3d256cb19d0dbe4bcb8`; GitHub Actions passed on that commit.
+- [x] **Day 4 — 2026-10-24:** document configuration precedence and local API-key setup, clarify that `.env` is not auto-loaded by the library, and align `.env.example` with the supported timeout setting.
 
 ## Daily roadmap
 
