@@ -8,7 +8,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 
-SUPPORTED_MESSAGE_ROLES = frozenset({"system", "user", "assistant", "tool"})
+SUPPORTED_MESSAGE_ROLES = frozenset({"system", "developer", "user", "assistant", "tool"})
 
 
 class ChatCompletionError(RuntimeError):
