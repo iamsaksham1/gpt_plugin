@@ -20,6 +20,29 @@ class ChatCompletionClientTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "at least one"):
             client.complete([])
 
+    def test_unsupported_message_role_is_rejected_before_network_call(self):
+        client = ChatCompletionClient(api_key="test-key")
+        messages = [{"role": "developer", "content": "Follow this instruction"}]
+        with patch("gpt_plugin.client.urlopen") as urlopen:
+            with self.assertRaisesRegex(ValueError, r"messages\[0\]\.role"):
+                client.complete(messages)
+        urlopen.assert_not_called()
+
+    def test_missing_message_role_is_rejected(self):
+        client = ChatCompletionClient(api_key="test-key")
+        with self.assertRaisesRegex(ValueError, r"messages\[0\]\.role"):
+            client.complete([{"content": "Hello"}])
+
+    def test_non_string_message_content_is_rejected(self):
+        client = ChatCompletionClient(api_key="test-key")
+        with self.assertRaisesRegex(ValueError, r"messages\[0\]\.content"):
+            client.complete([{"role": "user", "content": None}])
+
+    def test_non_dictionary_message_is_rejected(self):
+        client = ChatCompletionClient(api_key="test-key")
+        with self.assertRaisesRegex(ValueError, r"messages\[0\] must be a dictionary"):
+            client.complete(["not a message"])
+
     def test_temperature_is_validated(self):
         client = ChatCompletionClient(api_key="test-key")
         with self.assertRaisesRegex(ValueError, "between 0 and 2"):
