@@ -14,6 +14,7 @@
 - [x] **Day 2 — 2026-10-22:** publish the detailed 365-day plan, define calendar-day numbering, and establish honest completion rules. Verified roadmap commit: `0ffd6b7ccdab73db6cc20f6178c35494c9b0c0c4`.
 - [x] **Day 3 — 2026-10-23:** add immutable environment configuration in commit `4d56fbfd8f970dd9808ef3d256cb19d0dbe4bcb8`; GitHub Actions passed on that commit.
 - [x] **Day 4 — 2026-10-24:** document configuration precedence and local API-key setup, clarify that `.env` is not auto-loaded by the library, and align `.env.example` with the supported timeout setting.
+- [x] **Day 5 — 2026-10-25:** validate chat-message objects, supported roles (`system`, `developer`, `user`, `assistant`, `tool`), and string content before sending requests; add offline tests proving malformed messages fail before network access. Implementation: `630b85b1043fe8018005afcbd135e67549bd01a8`; tests: `3d639b7874bb2281fdeff9938ef467d0186c03b7`. Locally mirrored unit suite: 9 tests passed; GitHub CI status was not available at verification time.
 
 ## Daily roadmap
 
@@ -23,7 +24,7 @@
 - [x] **Day 2 (2026-10-22):** Publish this 365-day roadmap and define honest progress rules.
 - [x] **Day 3 (2026-10-23):** Implement an immutable configuration object for environment variables.
 - [x] **Day 4 (2026-10-24):** Document configuration precedence and local API-key setup.
-- [ ] **Day 5 (2026-10-25):** Validate message roles and content before requests.
+- [x] **Day 5 (2026-10-25):** Validate message roles and content before requests.
 - [ ] **Day 6 (2026-10-26):** Reject blank model names and invalid request parameters.
 - [ ] **Day 7 (2026-10-27):** Validate timeout values as finite and positive.
 - [ ] **Day 8 (2026-10-28):** Normalize and validate provider base URLs.
