@@ -22,7 +22,7 @@ class ChatCompletionClientTests(unittest.TestCase):
 
     def test_unsupported_message_role_is_rejected_before_network_call(self):
         client = ChatCompletionClient(api_key="test-key")
-        messages = [{"role": "developer", "content": "Follow this instruction"}]
+        messages = [{"role": "invalid_role", "content": "Follow this instruction"}]
         with patch("gpt_plugin.client.urlopen") as urlopen:
             with self.assertRaisesRegex(ValueError, r"messages\[0\]\.role"):
                 client.complete(messages)
