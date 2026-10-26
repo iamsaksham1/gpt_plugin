@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 import os
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
@@ -47,8 +48,7 @@ class ChatCompletionClient:
         Raises:
             ChatCompletionError: If credentials are missing, the HTTP request
                 fails, or the response does not match the expected schema.
-            ValueError: If messages are empty or malformed, or temperature is
-                out of range.
+            ValueError: If messages or request parameters are invalid.
         """
         if not self.api_key:
             raise ChatCompletionError(
@@ -57,8 +57,15 @@ class ChatCompletionClient:
         if not messages:
             raise ValueError("messages must contain at least one message")
         self._validate_messages(messages)
-        if not 0 <= temperature <= 2:
-            raise ValueError("temperature must be between 0 and 2")
+        if not isinstance(model, str) or not model.strip():
+            raise ValueError("model must be a non-empty string")
+        if (
+            isinstance(temperature, bool)
+            or not isinstance(temperature, (int, float))
+            or not math.isfinite(temperature)
+            or not 0 <= temperature <= 2
+        ):
+            raise ValueError("temperature must be a finite number between 0 and 2")
 
         payload = json.dumps(
             {"model": model, "messages": messages, "temperature": temperature}
