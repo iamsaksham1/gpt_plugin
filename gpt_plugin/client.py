@@ -62,8 +62,8 @@ class ChatCompletionClient:
         if (
             isinstance(temperature, bool)
             or not isinstance(temperature, (int, float))
-            or not math.isfinite(temperature)
             or not 0 <= temperature <= 2
+            or not math.isfinite(temperature)
         ):
             raise ValueError("temperature must be a finite number between 0 and 2")
 
