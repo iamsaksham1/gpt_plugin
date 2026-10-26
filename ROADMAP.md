@@ -15,7 +15,7 @@
 - [x] **Day 3 — 2026-10-23:** add immutable environment configuration in commit `4d56fbfd8f970dd9808ef3d256cb19d0dbe4bcb8`; GitHub Actions passed on that commit.
 - [x] **Day 4 — 2026-10-24:** document configuration precedence and local API-key setup, clarify that `.env` is not auto-loaded by the library, and align `.env.example` with the supported timeout setting.
 - [x] **Day 5 — 2026-10-25:** validate chat-message objects, supported roles (`system`, `developer`, `user`, `assistant`, `tool`), and string content before sending requests; add offline tests proving malformed messages fail before network access. Implementation: `630b85b1043fe8018005afcbd135e67549bd01a8`; tests: `3d639b7874bb2281fdeff9938ef467d0186c03b7`. Locally mirrored unit suite: 9 tests passed; GitHub CI status was not available at verification time.
-- [x] **Day 6 — 2026-10-26:** reject blank or non-string model names and invalid temperatures (out-of-range, non-finite, boolean, or non-numeric) before any network call. Implementation: `b0d3b120c80e0bea64c6dbdb5b2432e69589580e`; tests: `3b3a1fa40bc097fc0a1913735ce1bbb3dbf1da16`. GitHub Actions passed on the test commit.
+- [x] **Day 6 — 2026-10-26:** reject blank or non-string model names and invalid temperatures (out-of-range, non-finite, boolean, or non-numeric) before any network call. Implementation: `b0d3b120c80e0bea64c6dbdb5b2432e69589580e`; tests: `3b3a1fa40bc097fc0a1913735ce1bbb3dbf1da16`. Follow-up hardening safely rejects oversized integer temperatures: implementation `4d53e5254987a03bc6bf337e380e301ca84f2d21`, regression test `66aa981c98e1518761548de485b594fb62dc95f2`. GitHub Actions passed on the latest test commit.
 
 ## Daily roadmap
 
