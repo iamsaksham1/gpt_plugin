@@ -1,5 +1,6 @@
 """Unit tests for the GPT client; tests never make live network requests."""
 
+import math
 import unittest
 from unittest.mock import patch
 
@@ -42,6 +43,27 @@ class ChatCompletionClientTests(unittest.TestCase):
         client = ChatCompletionClient(api_key="test-key")
         with self.assertRaisesRegex(ValueError, r"messages\[0\] must be a dictionary"):
             client.complete(["not a message"])
+
+    def test_blank_or_non_string_model_is_rejected_before_network_call(self):
+        client = ChatCompletionClient(api_key="test-key")
+        messages = [{"role": "user", "content": "Hello"}]
+        for model in ("", "   ", None, 42):
+            with self.subTest(model=model):
+                with patch("gpt_plugin.client.urlopen") as urlopen:
+                    with self.assertRaisesRegex(ValueError, "model must be a non-empty string"):
+                        client.complete(messages, model=model)
+                urlopen.assert_not_called()
+
+    def test_invalid_temperature_is_rejected_before_network_call(self):
+        client = ChatCompletionClient(api_key="test-key")
+        messages = [{"role": "user", "content": "Hello"}]
+        invalid_values = (-0.1, 2.1, math.nan, math.inf, -math.inf, "0.5", True)
+        for temperature in invalid_values:
+            with self.subTest(temperature=temperature):
+                with patch("gpt_plugin.client.urlopen") as urlopen:
+                    with self.assertRaisesRegex(ValueError, "temperature must be a finite number"):
+                        client.complete(messages, temperature=temperature)
+                urlopen.assert_not_called()
 
     def test_temperature_is_validated(self):
         client = ChatCompletionClient(api_key="test-key")
