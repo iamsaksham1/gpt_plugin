@@ -70,9 +70,28 @@ class ChatCompletionClientTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "between 0 and 2"):
             client.complete([{"role": "user", "content": "Hello"}], temperature=2.1)
 
-    def test_timeout_must_be_positive(self):
-        with self.assertRaisesRegex(ValueError, "greater than zero"):
-            ChatCompletionClient(api_key="test-key", timeout=0)
+    def test_invalid_timeout_values_are_rejected(self):
+        invalid_timeouts = (
+            0,
+            -1,
+            math.nan,
+            math.inf,
+            -math.inf,
+            True,
+            "10",
+            10**1000,
+        )
+        for timeout in invalid_timeouts:
+            with self.subTest(timeout=timeout):
+                with self.assertRaisesRegex(
+                    ValueError, "timeout must be a finite number greater than zero"
+                ):
+                    ChatCompletionClient(api_key="test-key", timeout=timeout)
+
+    def test_positive_integer_timeout_is_normalized_to_float(self):
+        client = ChatCompletionClient(api_key="test-key", timeout=5)
+        self.assertEqual(client.timeout, 5.0)
+        self.assertIsInstance(client.timeout, float)
 
     def test_returns_assistant_text(self):
         class FakeResponse:
