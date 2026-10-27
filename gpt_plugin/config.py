@@ -6,6 +6,8 @@ import os
 from dataclasses import dataclass
 from typing import Mapping
 
+from ._validation import validate_timeout
+
 DEFAULT_BASE_URL = "https://api.openai.com/v1"
 DEFAULT_TIMEOUT = 30.0
 
@@ -17,6 +19,9 @@ class ClientConfig:
     api_key: str | None = None
     base_url: str = DEFAULT_BASE_URL
     timeout: float = DEFAULT_TIMEOUT
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, "timeout", validate_timeout(self.timeout))
 
     @classmethod
     def from_env(
@@ -36,6 +41,8 @@ class ClientConfig:
                 timeout = float(raw_timeout)
             except ValueError:
                 raise ValueError("OPENAI_TIMEOUT must be a number.") from None
+
+        timeout = validate_timeout(timeout, name="OPENAI_TIMEOUT")
 
         return cls(
             api_key=source.get("OPENAI_API_KEY"),
