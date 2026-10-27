@@ -1,5 +1,6 @@
 """Unit tests for immutable client configuration."""
 
+import math
 import unittest
 from dataclasses import FrozenInstanceError
 
@@ -33,6 +34,33 @@ class ClientConfigTests(unittest.TestCase):
     def test_invalid_environment_timeout_has_a_clear_error(self):
         with self.assertRaisesRegex(ValueError, "OPENAI_TIMEOUT must be a number"):
             ClientConfig.from_env({"OPENAI_TIMEOUT": "fast"})
+
+    def test_environment_rejects_non_positive_or_non_finite_timeouts(self):
+        for value in ("0", "-1", "nan", "inf", "-inf"):
+            with self.subTest(value=value):
+                with self.assertRaisesRegex(
+                    ValueError,
+                    "OPENAI_TIMEOUT must be a finite number greater than zero",
+                ):
+                    ClientConfig.from_env({"OPENAI_TIMEOUT": value})
+
+    def test_direct_configuration_rejects_invalid_timeouts(self):
+        invalid_timeouts = (
+            0,
+            -1,
+            math.nan,
+            math.inf,
+            -math.inf,
+            True,
+            "10",
+            10**1000,
+        )
+        for timeout in invalid_timeouts:
+            with self.subTest(timeout=timeout):
+                with self.assertRaisesRegex(
+                    ValueError, "timeout must be a finite number greater than zero"
+                ):
+                    ClientConfig(timeout=timeout)
 
     def test_build_client_uses_the_configuration_snapshot(self):
         config = ClientConfig(
