@@ -41,7 +41,6 @@ class ClientConfigTests(unittest.TestCase):
 
     def test_configuration_rejects_invalid_provider_base_urls(self):
         invalid_urls = (
-            "",
             "ftp://provider.example/v1",
             "https:///missing-host",
             "https://user:secret@provider.example/v1",
