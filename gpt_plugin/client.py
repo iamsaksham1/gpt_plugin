@@ -8,7 +8,7 @@ import os
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
-from ._validation import validate_timeout
+from ._validation import normalize_base_url, validate_timeout
 
 
 SUPPORTED_MESSAGE_ROLES = frozenset({"system", "developer", "user", "assistant", "tool"})
@@ -32,9 +32,9 @@ class ChatCompletionClient:
         timeout: float = 30.0,
     ) -> None:
         self.api_key = api_key if api_key is not None else os.getenv("OPENAI_API_KEY")
-        self.base_url = (
-            base_url or os.getenv("OPENAI_BASE_URL") or "https://api.openai.com/v1"
-        ).rstrip("/")
+        if base_url is None:
+            base_url = os.getenv("OPENAI_BASE_URL") or "https://api.openai.com/v1"
+        self.base_url = normalize_base_url(base_url)
         self.timeout = validate_timeout(timeout)
 
     def complete(
