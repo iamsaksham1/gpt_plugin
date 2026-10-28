@@ -6,7 +6,7 @@ import os
 from dataclasses import dataclass
 from typing import Mapping
 
-from ._validation import validate_timeout
+from ._validation import normalize_base_url, validate_timeout
 
 DEFAULT_BASE_URL = "https://api.openai.com/v1"
 DEFAULT_TIMEOUT = 30.0
@@ -21,6 +21,7 @@ class ClientConfig:
     timeout: float = DEFAULT_TIMEOUT
 
     def __post_init__(self) -> None:
+        object.__setattr__(self, "base_url", normalize_base_url(self.base_url))
         object.__setattr__(self, "timeout", validate_timeout(self.timeout))
 
     @classmethod
