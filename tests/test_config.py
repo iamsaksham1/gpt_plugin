@@ -31,6 +31,33 @@ class ClientConfigTests(unittest.TestCase):
         with self.assertRaises(FrozenInstanceError):
             config.timeout = 10.0
 
+    def test_configuration_normalizes_provider_base_url(self):
+        direct = ClientConfig(base_url="  HTTPS://Provider.Example/v1///  ")
+        from_env = ClientConfig.from_env(
+            {"OPENAI_BASE_URL": "  HTTPS://Provider.Example/v1///  "}
+        )
+        self.assertEqual(direct.base_url, "https://Provider.Example/v1")
+        self.assertEqual(from_env.base_url, "https://Provider.Example/v1")
+
+    def test_configuration_rejects_invalid_provider_base_urls(self):
+        invalid_urls = (
+            "",
+            "ftp://provider.example/v1",
+            "https:///missing-host",
+            "https://user:secret@provider.example/v1",
+            "https://provider.example/v1?token=secret",
+            "https://provider.example/v1#fragment",
+            "https://provider.example:99999/v1",
+            "https://provider.example/v1 path",
+            123,
+        )
+        for base_url in invalid_urls:
+            with self.subTest(base_url=base_url):
+                with self.assertRaisesRegex(ValueError, "absolute HTTP"):
+                    ClientConfig(base_url=base_url)
+                with self.assertRaisesRegex(ValueError, "absolute HTTP"):
+                    ClientConfig.from_env({"OPENAI_BASE_URL": base_url})
+
     def test_invalid_environment_timeout_has_a_clear_error(self):
         with self.assertRaisesRegex(ValueError, "OPENAI_TIMEOUT must be a number"):
             ClientConfig.from_env({"OPENAI_TIMEOUT": "fast"})
