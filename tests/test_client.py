@@ -44,6 +44,33 @@ class ChatCompletionClientTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, r"messages\[0\] must be a dictionary"):
             client.complete(["not a message"])
 
+    def test_base_url_is_normalized(self):
+        client = ChatCompletionClient(
+            api_key="test-key",
+            base_url="  HTTPS://Provider.Example/v1///  ",
+        )
+        self.assertEqual(client.base_url, "https://Provider.Example/v1")
+
+    def test_invalid_base_urls_are_rejected(self):
+        invalid_urls = (
+            "",
+            "   ",
+            "ftp://provider.example/v1",
+            "https:///missing-host",
+            "https://user:secret@provider.example/v1",
+            "https://provider.example/v1?token=secret",
+            "https://provider.example/v1#fragment",
+            "https://provider.example:99999/v1",
+            "http://provider.example:0/v1",
+            "https://provider.example/v1 path",
+            "https://provider.example\\@evil.example/v1",
+            123,
+        )
+        for base_url in invalid_urls:
+            with self.subTest(base_url=base_url):
+                with self.assertRaisesRegex(ValueError, "absolute HTTP"):
+                    ChatCompletionClient(api_key="test-key", base_url=base_url)
+
     def test_blank_or_non_string_model_is_rejected_before_network_call(self):
         client = ChatCompletionClient(api_key="test-key")
         messages = [{"role": "user", "content": "Hello"}]
