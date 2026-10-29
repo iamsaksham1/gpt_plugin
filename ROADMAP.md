@@ -31,8 +31,8 @@
 - [x] **Day 5 (2026-10-25):** Validate message roles and content before requests.
 - [x] **Day 6 (2026-10-26):** Reject blank model names and invalid request parameters.
 - [x] **Day 7 (2026-10-27):** Validate timeout values as finite and positive.
+- [x] **Day 8 (2026-10-28):** Normalize and validate provider base URLs.
 - [x] **Day 9 (2026-10-29):** Document public exceptions and error guarantees.
-- [ ] **Day 9 (2026-10-29):** Document public exceptions and error guarantees.
 - [ ] **Day 10 (2026-10-30):** Add a typed-package marker and verify package discovery.
 - [ ] **Day 11 (2026-10-31):** Configure consistent formatting for Python sources.
 - [ ] **Day 12 (2026-11-01):** Configure lint checks for package code and tests.
