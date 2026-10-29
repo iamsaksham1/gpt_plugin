@@ -18,6 +18,7 @@
 - [x] **Day 6 — 2026-10-26:** reject blank or non-string model names and invalid temperatures (out-of-range, non-finite, boolean, or non-numeric) before any network call. Implementation: `b0d3b120c80e0bea64c6dbdb5b2432e69589580e`; tests: `3b3a1fa40bc097fc0a1913735ce1bbb3dbf1da16`. Follow-up hardening safely rejects oversized integer temperatures: implementation `4d53e5254987a03bc6bf337e380e301ca84f2d21`, regression test `66aa981c98e1518761548de485b594fb62dc95f2`. GitHub Actions passed on the latest test commit.
 - [x] **Day 7 — 2026-10-27:** validate timeouts in the client and immutable configuration, including environment-loaded values. Reject zero, negatives, NaN, infinities, booleans, strings, and integers too large to convert; normalize accepted values to floats. Helper: `1620735304218b20056053acc2ee7a207332d184`; client: `e176a5546040ff0fabc519b8430ec35169515c74`; config: `6937882060fce081568d25c663ac79f6e39d87b4`; tests: `9165d0c19e100443958e915e9d576c9fe7ebe74a`, `9d9444e4d5812759d5dec38580734e11b803bc6c`. A locally mirrored offline suite ran 19 tests successfully; GitHub Actions status was unavailable at verification time.
 - [x] **Day 8 — 2026-10-28:** add shared provider base-URL validation and normalization. Strip surrounding whitespace and trailing slashes; normalize the scheme to lowercase; reject non-HTTP(S) schemes, missing hosts, credentials, query strings, fragments, malformed/invalid ports, embedded whitespace, backslashes, and non-string values. Empty `OPENAI_BASE_URL` retains the existing default fallback. Helper: `caa3976a23358c46b8eeb832601a339e8b5150f2`; client integration: `2a9f6ea8c6fb26fa60439669f1cb2cb4ca8742b7`; config integration: `871cbe0e52ca21b3c399a194a379807119567bb0`; tests: `bef153ad5ebc81816e0c4d7b24a3e73130e2c6b2`, `a4a56d11fff4f10b977567896e726b75f3cda464`. A local mirror of the current unit tests plus four targeted URL checks passed 27 tests; GitHub combined status returned no checks, so CI is unconfirmed.
+- [x] **Day 9 — 2026-10-29:** document the public exception contract in `docs/errors.md`, clarify `ValueError` versus `ChatCompletionError`, describe current error-message/security limits and retry limitations, link the guide from the README, align the configuration guide with current base-URL validation, and update client docstrings. Documentation commits: `24b8e291fc0bccbd63bf7c7701b19d7aec696c5d`, `32960214192053c1fb1af4bc2d5de7b3915dc0cd`, `f21c57cb5313ffc7969b23e5b301abe624439370`, `6c2b2f1881d5143d8d495a777738ea01f2cb8e19`.
 
 ## Daily roadmap
 
@@ -30,7 +31,7 @@
 - [x] **Day 5 (2026-10-25):** Validate message roles and content before requests.
 - [x] **Day 6 (2026-10-26):** Reject blank model names and invalid request parameters.
 - [x] **Day 7 (2026-10-27):** Validate timeout values as finite and positive.
-- [x] **Day 8 (2026-10-28):** Normalize and validate provider base URLs.
+- [x] **Day 9 (2026-10-29):** Document public exceptions and error guarantees.
 - [ ] **Day 9 (2026-10-29):** Document public exceptions and error guarantees.
 - [ ] **Day 10 (2026-10-30):** Add a typed-package marker and verify package discovery.
 - [ ] **Day 11 (2026-10-31):** Configure consistent formatting for Python sources.
