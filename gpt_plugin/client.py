@@ -15,7 +15,7 @@ SUPPORTED_MESSAGE_ROLES = frozenset({"system", "developer", "user", "assistant",
 
 
 class ChatCompletionError(RuntimeError):
-    """Raised when the chat-completions API request fails."""
+    """Raised for missing credentials or known request and response failures."""
 
 
 class ChatCompletionClient:
@@ -46,9 +46,14 @@ class ChatCompletionClient:
         """Return the assistant's text response.
 
         Raises:
-            ChatCompletionError: If credentials are missing, the HTTP request
-                fails, or the response does not match the expected schema.
-            ValueError: If messages or request parameters are invalid.
+            ValueError: If messages or request parameters fail local validation.
+            ChatCompletionError: If credentials are missing, an HTTP or
+                transport failure occurs, response decoding fails, or the
+                provider response lacks a text string at the expected path.
+
+        Invalid documented inputs are rejected before network access. Known
+        transport and response failures are normalized to ChatCompletionError;
+        unexpected programming errors may still propagate as native exceptions.
         """
         if not self.api_key:
             raise ChatCompletionError(
