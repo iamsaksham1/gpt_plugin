@@ -10,7 +10,7 @@ GPT Plugin Lab reads configuration from environment variables. It does not load 
 | `OPENAI_BASE_URL` | No | `https://api.openai.com/v1` | Base URL for an OpenAI-compatible API. |
 | `OPENAI_TIMEOUT` | No | `30` seconds | Network timeout used by the client. |
 
-`OPENAI_TIMEOUT` must be numeric; the client requires a positive timeout. The library currently accepts the base URL as configured and strips trailing slashes when constructing the client endpoint. Use a trusted provider URL.
+`OPENAI_TIMEOUT` must be numeric and finite, and the client requires a positive timeout. Provider base URLs are validated and normalized: surrounding whitespace and trailing slashes are removed, the scheme is lowercased, and credentials, query strings, fragments, malformed hosts, and invalid ports are rejected. Use a trusted provider URL. See the [error guide](errors.md) for the current exception contract.
 
 ## Configuration precedence
 
