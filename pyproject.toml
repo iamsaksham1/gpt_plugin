@@ -13,3 +13,6 @@ dependencies = []
 
 [tool.setuptools.packages.find]
 include = ["gpt_plugin*"]
+
+[tool.setuptools.package-data]
+gpt_plugin = ["py.typed"]
