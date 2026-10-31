@@ -41,9 +41,7 @@ class ChatCompletionClientTests(unittest.TestCase):
 
     def test_non_dictionary_message_is_rejected(self):
         client = ChatCompletionClient(api_key="test-key")
-        with self.assertRaisesRegex(
-            ValueError, r"messages\[0\] must be a dictionary"
-        ):
+        with self.assertRaisesRegex(ValueError, r"messages\[0\] must be a dictionary"):
             client.complete(["not a message"])
 
     def test_base_url_is_normalized(self):
