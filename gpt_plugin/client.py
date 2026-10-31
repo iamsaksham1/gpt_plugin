@@ -11,7 +11,9 @@ from urllib.request import Request, urlopen
 from ._validation import normalize_base_url, validate_timeout
 
 
-SUPPORTED_MESSAGE_ROLES = frozenset({"system", "developer", "user", "assistant", "tool"})
+SUPPORTED_MESSAGE_ROLES = frozenset(
+    {"system", "developer", "user", "assistant", "tool"}
+)
 
 
 class ChatCompletionError(RuntimeError):

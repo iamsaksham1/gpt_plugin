@@ -25,23 +25,25 @@ class ChatCompletionClientTests(unittest.TestCase):
         client = ChatCompletionClient(api_key="test-key")
         messages = [{"role": "invalid_role", "content": "Follow this instruction"}]
         with patch("gpt_plugin.client.urlopen") as urlopen:
-            with self.assertRaisesRegex(ValueError, r"messages\[0\]\.role"):
+            with self.assertRaisesRegex(ValueError, r"messages\\[0\\]\\.role"):
                 client.complete(messages)
         urlopen.assert_not_called()
 
     def test_missing_message_role_is_rejected(self):
         client = ChatCompletionClient(api_key="test-key")
-        with self.assertRaisesRegex(ValueError, r"messages\[0\]\.role"):
+        with self.assertRaisesRegex(ValueError, r"messages\\[0\\]\\.role"):
             client.complete([{"content": "Hello"}])
 
     def test_non_string_message_content_is_rejected(self):
         client = ChatCompletionClient(api_key="test-key")
-        with self.assertRaisesRegex(ValueError, r"messages\[0\]\.content"):
+        with self.assertRaisesRegex(ValueError, r"messages\\[0\\]\\.content"):
             client.complete([{"role": "user", "content": None}])
 
     def test_non_dictionary_message_is_rejected(self):
         client = ChatCompletionClient(api_key="test-key")
-        with self.assertRaisesRegex(ValueError, r"messages\[0\] must be a dictionary"):
+        with self.assertRaisesRegex(
+            ValueError, r"messages\\[0\\] must be a dictionary"
+        ):
             client.complete(["not a message"])
 
     def test_base_url_is_normalized(self):
@@ -63,7 +65,7 @@ class ChatCompletionClientTests(unittest.TestCase):
             "https://provider.example:99999/v1",
             "http://provider.example:0/v1",
             "https://provider.example/v1 path",
-            "https://provider.example\\@evil.example/v1",
+            "https://provider.example\\\\@evil.example/v1",
             123,
         )
         for base_url in invalid_urls:
@@ -77,25 +79,40 @@ class ChatCompletionClientTests(unittest.TestCase):
         for model in ("", "   ", None, 42):
             with self.subTest(model=model):
                 with patch("gpt_plugin.client.urlopen") as urlopen:
-                    with self.assertRaisesRegex(ValueError, "model must be a non-empty string"):
+                    with self.assertRaisesRegex(
+                        ValueError, "model must be a non-empty string"
+                    ):
                         client.complete(messages, model=model)
                 urlopen.assert_not_called()
 
     def test_invalid_temperature_is_rejected_before_network_call(self):
         client = ChatCompletionClient(api_key="test-key")
         messages = [{"role": "user", "content": "Hello"}]
-        invalid_values = (-0.1, 2.1, math.nan, math.inf, -math.inf, "0.5", True, 10**1000)
+        invalid_values = (
+            -0.1,
+            2.1,
+            math.nan,
+            math.inf,
+            -math.inf,
+            "0.5",
+            True,
+            10**1000,
+        )
         for temperature in invalid_values:
             with self.subTest(temperature=temperature):
                 with patch("gpt_plugin.client.urlopen") as urlopen:
-                    with self.assertRaisesRegex(ValueError, "temperature must be a finite number"):
+                    with self.assertRaisesRegex(
+                        ValueError, "temperature must be a finite number"
+                    ):
                         client.complete(messages, temperature=temperature)
                 urlopen.assert_not_called()
 
     def test_temperature_is_validated(self):
         client = ChatCompletionClient(api_key="test-key")
         with self.assertRaisesRegex(ValueError, "between 0 and 2"):
-            client.complete([{"role": "user", "content": "Hello"}], temperature=2.1)
+            client.complete(
+                [{"role": "user", "content": "Hello"}], temperature=2.1
+            )
 
     def test_invalid_timeout_values_are_rejected(self):
         invalid_timeouts = (

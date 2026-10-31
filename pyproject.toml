@@ -11,6 +11,13 @@ requires-python = ">=3.11"
 license = { text = "MIT" }
 dependencies = []
 
+[project.optional-dependencies]
+dev = ["black>=24.0"]
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
 [tool.setuptools.packages.find]
 include = ["gpt_plugin*"]
 
