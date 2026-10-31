@@ -25,24 +25,24 @@ class ChatCompletionClientTests(unittest.TestCase):
         client = ChatCompletionClient(api_key="test-key")
         messages = [{"role": "invalid_role", "content": "Follow this instruction"}]
         with patch("gpt_plugin.client.urlopen") as urlopen:
-            with self.assertRaisesRegex(ValueError, r"messages\\[0\\]\\.role"):
+            with self.assertRaisesRegex(ValueError, r"messages\[0\]\.role"):
                 client.complete(messages)
         urlopen.assert_not_called()
 
     def test_missing_message_role_is_rejected(self):
         client = ChatCompletionClient(api_key="test-key")
-        with self.assertRaisesRegex(ValueError, r"messages\\[0\\]\\.role"):
+        with self.assertRaisesRegex(ValueError, r"messages\[0\]\.role"):
             client.complete([{"content": "Hello"}])
 
     def test_non_string_message_content_is_rejected(self):
         client = ChatCompletionClient(api_key="test-key")
-        with self.assertRaisesRegex(ValueError, r"messages\\[0\\]\\.content"):
+        with self.assertRaisesRegex(ValueError, r"messages\[0\]\.content"):
             client.complete([{"role": "user", "content": None}])
 
     def test_non_dictionary_message_is_rejected(self):
         client = ChatCompletionClient(api_key="test-key")
         with self.assertRaisesRegex(
-            ValueError, r"messages\\[0\\] must be a dictionary"
+            ValueError, r"messages\[0\] must be a dictionary"
         ):
             client.complete(["not a message"])
 
@@ -65,7 +65,7 @@ class ChatCompletionClientTests(unittest.TestCase):
             "https://provider.example:99999/v1",
             "http://provider.example:0/v1",
             "https://provider.example/v1 path",
-            "https://provider.example\\\\@evil.example/v1",
+            "https://provider.example\\@evil.example/v1",
             123,
         )
         for base_url in invalid_urls:
