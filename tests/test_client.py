@@ -110,9 +110,7 @@ class ChatCompletionClientTests(unittest.TestCase):
     def test_temperature_is_validated(self):
         client = ChatCompletionClient(api_key="test-key")
         with self.assertRaisesRegex(ValueError, "between 0 and 2"):
-            client.complete(
-                [{"role": "user", "content": "Hello"}], temperature=2.1
-            )
+            client.complete([{"role": "user", "content": "Hello"}], temperature=2.1)
 
     def test_invalid_timeout_values_are_rejected(self):
         invalid_timeouts = (
