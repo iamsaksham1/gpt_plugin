@@ -10,7 +10,6 @@ from urllib.request import Request, urlopen
 
 from ._validation import normalize_base_url, validate_timeout
 
-
 SUPPORTED_MESSAGE_ROLES = frozenset(
     {"system", "developer", "user", "assistant", "tool"}
 )
@@ -124,9 +123,7 @@ class ChatCompletionClient:
             role = message.get("role")
             if not isinstance(role, str) or role not in SUPPORTED_MESSAGE_ROLES:
                 supported = ", ".join(sorted(SUPPORTED_MESSAGE_ROLES))
-                raise ValueError(
-                    f"messages[{index}].role must be one of: {supported}"
-                )
+                raise ValueError(f"messages[{index}].role must be one of: {supported}")
 
             if not isinstance(message.get("content"), str):
                 raise ValueError(f"messages[{index}].content must be a string")
