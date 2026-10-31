@@ -25,9 +25,7 @@ class ClientConfig:
         object.__setattr__(self, "timeout", validate_timeout(self.timeout))
 
     @classmethod
-    def from_env(
-        cls, environ: Mapping[str, str] | None = None
-    ) -> "ClientConfig":
+    def from_env(cls, environ: Mapping[str, str] | None = None) -> "ClientConfig":
         """Load configuration from environment variables.
 
         An optional mapping can be supplied to make configuration loading
