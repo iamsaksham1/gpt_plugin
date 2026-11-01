@@ -21,6 +21,7 @@
 - [x] **Day 9 — 2026-10-29:** document the public exception contract in `docs/errors.md`, clarify `ValueError` versus `ChatCompletionError`, describe current error-message/security limits and retry limitations, link the guide from the README, align the configuration guide with current base-URL validation, and update client docstrings. Documentation commits: `24b8e291fc0bccbd63bf7c7701b19d7aec696c5d`, `32960214192053c1fb1af4bc2d5de7b3915dc0cd`, `f21c57cb5313ffc7969b23e5b301abe624439370`, `6c2b2f1881d5143d8d495a777738ea01f2cb8e19`.
 - [x] **Day 10 — 2026-10-30:** add the PEP 561 `gpt_plugin/py.typed` marker, configure setuptools to include it in distributions, and extend GitHub Actions to build a wheel and assert the marker is present. Marker commit: `160b318586a0f086d03e42232f5d49a12b3cdb2b`; packaging commit: `03d806c77182fa3f2da4767962a723c184a1f16b`; CI verification commit: `5a555962a64294e1ff244053b4b194129443d381`. GitHub Actions passed, including the wheel-content assertion.
 - [x] **Day 11 — 2026-10-31:** standardize Python formatting with Black, set an 88-character line length and Python 3.11 target, add Black as an optional development dependency, format the client/configuration/tests, and enforce `black --check --diff` in CI before unit tests. Main implementation/configuration/CI commit: `0b52642ddd0bf83420b488374f1c5dbb6ac87ec0`; formatting follow-ups: `dfc88d56e3a61d7002180b1791ce862b5735befa`, `7f8f2bee6da937603eb32f1693ab6b68205255db`, `d38fe29317fb86460364bbed44d8e541c750dc3e`. GitHub Actions run `41165031649` passed: formatting check, 23 unit tests, wheel build, and typed-marker verification.
+- [x] **Day 12 — 2026-11-01:** add Ruff as an optional development dependency, configure a focused correctness lint baseline (`E4`, `E7`, `E9`, and `F`) for Python 3.11, and enforce `ruff check gpt_plugin tests` in GitHub Actions after formatting.
 
 ## Daily roadmap
 
@@ -37,7 +38,7 @@
 - [x] **Day 9 (2026-10-29):** Document public exceptions and error guarantees.
 - [x] **Day 10 (2026-10-30):** Add a PEP 561 `py.typed` marker, include it in built distributions, and verify wheel contents in CI.
 - [x] **Day 11 (2026-10-31):** Configure Black formatting for Python sources and enforce it in CI.
-- [ ] **Day 12 (2026-11-01):** Configure lint checks for package code and tests.
+- [x] **Day 12 (2026-11-01):** Configure Ruff lint checks for package code and tests.
 - [ ] **Day 13 (2026-11-02):** Run CI on Python 3.11.
 - [ ] **Day 14 (2026-11-03):** Run CI on Python 3.12.
 - [ ] **Day 15 (2026-11-04):** Run CI on Python 3.13.
