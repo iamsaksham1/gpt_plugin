@@ -23,6 +23,7 @@
 - [x] **Day 11 — 2026-10-31:** standardize Python formatting with Black, set an 88-character line length and Python 3.11 target, add Black as an optional development dependency, format the client/configuration/tests, and enforce `black --check --diff` in CI before unit tests. Main implementation/configuration/CI commit: `0b52642ddd0bf83420b488374f1c5dbb6ac87ec0`; formatting follow-ups: `dfc88d56e3a61d7002180b1791ce862b5735befa`, `7f8f2bee6da937603eb32f1693ab6b68205255db`, `d38fe29317fb86460364bbed44d8e541c750dc3e`. GitHub Actions run `41165031649` passed: formatting check, 23 unit tests, wheel build, and typed-marker verification.
 - [x] **Day 12 — 2026-11-01:** add Ruff as an optional development dependency, configure a focused correctness lint baseline (`E4`, `E7`, `E9`, and `F`) for Python 3.11, and enforce `ruff check gpt_plugin tests` in GitHub Actions after formatting.
 - [x] **Day 13 — 2026-11-02:** expand GitHub Actions to a Python-version matrix covering 3.11 and 3.12 while retaining the existing 3.12 baseline. Commit: `51033e55ea704d748276c290776d5b3254c09512`. Workflow run `41383475205`: both matrix jobs completed successfully; formatting, Ruff, unit tests, wheel build, and typed-marker verification passed on both versions.
+- [x] **Day 14 — 2026-11-03:** expand the GitHub Actions Python matrix to 3.11, 3.12, and 3.13. Commit: `00f86d9da411640240cdfe6de78f32f19636bd65`. Workflow run `41572917432`: all three Python-version jobs completed successfully; formatting, Ruff, unit tests, wheel build, and PEP 561 marker verification passed.
 
 ## Daily roadmap
 
@@ -41,7 +42,7 @@
 - [x] **Day 11 (2026-10-31):** Configure Black formatting for Python sources and enforce it in CI.
 - [x] **Day 12 (2026-11-01):** Configure Ruff lint checks for package code and tests.
 - [x] **Day 13 (2026-11-02):** Add Python 3.11 to the CI matrix while retaining Python 3.12.
-- [ ] **Day 14 (2026-11-03):** Add Python 3.13 to the CI matrix.
+- [x] **Day 14 (2026-11-03):** Add Python 3.13 to the CI matrix.
 - [ ] **Day 15 (2026-11-04):** Add Python 3.14 to the CI matrix and review the supported-version policy.
 - [ ] **Day 16 (2026-11-05):** Add contributor setup and test instructions.
 - [ ] **Day 17 (2026-11-06):** Add a pull-request template with test expectations.
