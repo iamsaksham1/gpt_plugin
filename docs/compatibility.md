@@ -5,10 +5,9 @@
 GPT Plugin Lab requires **Python 3.11 or newer**, as declared by
 `requires-python = ">=3.11"` in `pyproject.toml`.
 
-## Verified CI matrix
+## Configured CI matrix
 
-The current compatibility baseline is the CPython minor-version matrix exercised
-by GitHub Actions:
+GitHub Actions is configured to exercise the following CPython minor versions:
 
 - Python 3.11
 - Python 3.12
