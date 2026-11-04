@@ -24,6 +24,7 @@
 - [x] **Day 12 — 2026-11-01:** add Ruff as an optional development dependency, configure a focused correctness lint baseline (`E4`, `E7`, `E9`, and `F`) for Python 3.11, and enforce `ruff check gpt_plugin tests` in GitHub Actions after formatting.
 - [x] **Day 13 — 2026-11-02:** expand GitHub Actions to a Python-version matrix covering 3.11 and 3.12 while retaining the existing 3.12 baseline. Commit: `51033e55ea704d748276c290776d5b3254c09512`. Workflow run `41383475205`: both matrix jobs completed successfully; formatting, Ruff, unit tests, wheel build, and typed-marker verification passed on both versions.
 - [x] **Day 14 — 2026-11-03:** expand the GitHub Actions Python matrix to 3.11, 3.12, and 3.13. Commit: `00f86d9da411640240cdfe6de78f32f19636bd65`. Workflow run `41572917432`: all three Python-version jobs completed successfully; formatting, Ruff, unit tests, wheel build, and PEP 561 marker verification passed.
+- [x] **Day 15 — 2026-11-04:** expand the CI matrix to CPython 3.11–3.14 and document the compatibility policy: Python 3.11 is the declared minimum; only matrix versions are CI-verified; current CI platform coverage is CPython on Ubuntu. Workflow commit: `f38cf482ce57cf609c98b42c255753582fa547a6`; policy guide commit: `a08d1d6f81bb6eaa6b916efddb4c05e4ecf1da64`; README link commit: `121415e9bf10b7abc88531ac7035ef1bb91514d8`. Final CI status is recorded after verification.
 
 ## Daily roadmap
 
@@ -43,7 +44,7 @@
 - [x] **Day 12 (2026-11-01):** Configure Ruff lint checks for package code and tests.
 - [x] **Day 13 (2026-11-02):** Add Python 3.11 to the CI matrix while retaining Python 3.12.
 - [x] **Day 14 (2026-11-03):** Add Python 3.13 to the CI matrix.
-- [ ] **Day 15 (2026-11-04):** Add Python 3.14 to the CI matrix and review the supported-version policy.
+- [x] **Day 15 (2026-11-04):** Add Python 3.14 to the CI matrix and review the supported-version policy.
 - [ ] **Day 16 (2026-11-05):** Add contributor setup and test instructions.
 - [ ] **Day 17 (2026-11-06):** Add a pull-request template with test expectations.
 - [ ] **Day 18 (2026-11-07):** Add a focused bug-report template.
