@@ -11,7 +11,7 @@ A small, practical Python foundation for building GPT-powered applications. The 
 
 ## Quick start
 
-Requires Python 3.11 or newer.
+Requires Python 3.11 or newer. The currently CI-verified CPython versions and platform scope are documented in the [compatibility policy](docs/compatibility.md).
 
 ```bash
 python -m unittest discover -s tests -v
