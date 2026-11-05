@@ -25,6 +25,7 @@
 - [x] **Day 13 — 2026-11-02:** expand GitHub Actions to a Python-version matrix covering 3.11 and 3.12 while retaining the existing 3.12 baseline. Commit: `51033e55ea704d748276c290776d5b3254c09512`. Workflow run `41383475205`: both matrix jobs completed successfully; formatting, Ruff, unit tests, wheel build, and typed-marker verification passed on both versions.
 - [x] **Day 14 — 2026-11-03:** expand the GitHub Actions Python matrix to 3.11, 3.12, and 3.13. Commit: `00f86d9da411640240cdfe6de78f32f19636bd65`. Workflow run `41572917432`: all three Python-version jobs completed successfully; formatting, Ruff, unit tests, wheel build, and PEP 561 marker verification passed.
 - [x] **Day 15 — 2026-11-04:** expand the CI matrix to CPython 3.11–3.14 and document the compatibility policy: Python 3.11 is the declared minimum; only matrix versions are CI-verified; current CI platform coverage is CPython on Ubuntu. Workflow commit: `f38cf482ce57cf609c98b42c255753582fa547a6`; policy guide commit: `a08d1d6f81bb6eaa6b916efddb4c05e4ecf1da64`; README link commit: `121415e9bf10b7abc88531ac7035ef1bb91514d8`. Compatibility wording follow-up: `123f46abcdafbcfaa0662a3a555be3cde1fc75ba`. GitHub combined-status queries returned no status contexts, and the available workflow-run lookup is limited to pull-request runs; CI result for this push is therefore unconfirmed.
+- [x] **Day 16 — 2026-11-05:** add `CONTRIBUTING.md` with Python 3.11+ environment setup, editable installation of development tools, Black/Ruff/unit-test commands, wheel-build instructions, offline-test expectations, secret-handling guidance, and pull-request expectations; link it from the README. Contributor guide commit: `e67622580acb8525269377e130432329fe120ce9`; README navigation commit: `5a286a95b7f48580f54e82b4f9df41381bf71d2a`. Documentation-only change; commands were checked against `pyproject.toml` and the current CI workflow. No runtime tests were needed or claimed.
 
 ## Daily roadmap
 
@@ -45,7 +46,7 @@
 - [x] **Day 13 (2026-11-02):** Add Python 3.11 to the CI matrix while retaining Python 3.12.
 - [x] **Day 14 (2026-11-03):** Add Python 3.13 to the CI matrix.
 - [x] **Day 15 (2026-11-04):** Add Python 3.14 to the CI matrix and review the supported-version policy.
-- [ ] **Day 16 (2026-11-05):** Add contributor setup and test instructions.
+- [x] **Day 16 (2026-11-05):** Add `CONTRIBUTING.md` with local setup, development dependency installation, formatting/lint/test commands, wheel-build guidance, offline-test expectations, and contribution standards; link it from the README.
 - [ ] **Day 17 (2026-11-06):** Add a pull-request template with test expectations.
 - [ ] **Day 18 (2026-11-07):** Add a focused bug-report template.
 - [ ] **Day 19 (2026-11-08):** Add a feature-request template with acceptance criteria.
