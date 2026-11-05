@@ -19,6 +19,10 @@ python -m unittest discover -s tests -v
 
 To call an API, set `OPENAI_API_KEY`. The default endpoint is OpenAI's API; `OPENAI_BASE_URL` can point to another OpenAI-compatible provider. Never commit credentials. See the [configuration guide](docs/configuration.md) for variable defaults, precedence, and local setup, and the [error guide](docs/errors.md) for public exceptions and failure guarantees.
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for local environment setup, development dependencies, formatting, linting, tests, and pull-request expectations.
+
 ## 365-day project roadmap
 
 The full day-by-day plan lives in [ROADMAP.md](ROADMAP.md). It covers configuration, client reliability, GPT capabilities, provider support, persistence, retrieval-augmented generation (RAG), controlled tool use, security, evaluation, application integrations, deployment, and release engineering.
