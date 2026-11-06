@@ -49,7 +49,7 @@
 - [x] **Day 15 (2026-11-04):** Add Python 3.14 to the CI matrix and review the supported-version policy.
 - [x] **Day 16 (2026-11-05):** Add `CONTRIBUTING.md` with local setup, development dependency installation, formatting/lint/test commands, wheel-build guidance, offline-test expectations, and contribution standards; link it from the README.
 - [x] **Day 17 (2026-11-06):** Add a pull-request template with implementation summary, issue context, validation, compatibility, security, and review checklists.
-- [ ] **Day 17 (2026-11-06):** Add a pull-request template with test expectations.
+- [x] **Day 17 (2026-11-06):** Add a pull-request template with test expectations.
 - [ ] **Day 18 (2026-11-07):** Add a focused bug-report template.
 - [ ] **Day 19 (2026-11-08):** Add a feature-request template with acceptance criteria.
 - [ ] **Day 20 (2026-11-09):** Verify license and attribution policy.
