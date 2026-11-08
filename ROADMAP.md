@@ -28,6 +28,7 @@
 - [x] **Day 16 — 2026-11-05:** add `CONTRIBUTING.md` with Python 3.11+ environment setup, editable installation of development tools, Black/Ruff/unit-test commands, wheel-build instructions, offline-test expectations, secret-handling guidance, and pull-request expectations; link it from the README. Contributor guide commit: `e67622580acb8525269377e130432329fe120ce9`; README navigation commit: `5a286a95b7f48580f54e82b4f9df41381bf71d2a`. Documentation-only change; commands were checked against `pyproject.toml` and the current CI workflow. No runtime tests were needed or claimed.
 - [x] **Day 17 — 2026-11-06:** add `.github/PULL_REQUEST_TEMPLATE.md` with structured sections for problem/implementation summary, related issues, change type, exact validation commands, compatibility/documentation impact, security/data handling, and review readiness. Template commit: `3ba6ada53860d2c7bd5e77610f90e78311aa723c`. Documentation/process-only change; the template was checked against the current contributor guide and CI commands. No runtime tests were needed or claimed.
 - [x] **Day 18 — 2026-11-07:** add `.github/ISSUE_TEMPLATE/bug_report.md` with reproduction steps, expected/actual behavior, environment details, sanitized logs, and explicit warnings not to post API keys, tokens, private prompts, personal information, or customer data. Template commit: `53b59dbb108ac602ca538b448bf77080ba05761a`. GitHub Actions run `42334005531` passed on Python 3.11–3.14: Black, Ruff, unit tests, wheel build, and PEP 561 marker verification.
+- [x] **Day 19 — 2026-11-08:** add `.github/ISSUE_TEMPLATE/feature_request.md` to capture the user problem, proposed behavior, measurable acceptance criteria, alternatives, compatibility/provider considerations, and security/privacy/operational implications. Template commit: `1de8889c2a4e66a6c868e9c81e1e26c46636a38b`. Documentation-only change; verified the committed template and roadmap on `main`; runtime tests were not applicable and no CI pass is claimed.
 
 ## Daily roadmap
 
@@ -51,7 +52,7 @@
 - [x] **Day 16 (2026-11-05):** Add `CONTRIBUTING.md` with local setup, development dependency installation, formatting/lint/test commands, wheel-build guidance, offline-test expectations, and contribution standards; link it from the README.
 - [x] **Day 17 (2026-11-06):** Add a pull-request template with implementation summary, issue context, validation, compatibility, security, and review checklists.
 - [x] **Day 18 (2026-11-07):** Add a focused bug-report template.
-- [ ] **Day 19 (2026-11-08):** Add a feature-request template with acceptance criteria.
+- [x] **Day 19 (2026-11-08):** Add a feature-request template with acceptance criteria.
 - [ ] **Day 20 (2026-11-09):** Verify license and attribution policy.
 - [ ] **Day 21 (2026-11-10):** Publish test coverage in CI.
 - [ ] **Day 22 (2026-11-11):** Set a justified minimum coverage threshold.
